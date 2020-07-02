@@ -49,11 +49,13 @@ def chooseAction(event):
                 return
 
 def save(nodes):
-    f = open("Final plot", "w")
+    f = open("Plot", "w")
     for node in nodes:
-        f.writelines(node.save())
+        f.write(node.save() + "\n")
     
     f.close()
+    done = Label(root, text="Done")
+    done.pack()
 
 
 createSence = Button(root, text="New Save", command=lambda: save(nodes))

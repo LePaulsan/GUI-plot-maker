@@ -4,7 +4,7 @@ import tkinter
 class Node:
     def __init__(self, surface, x, y, data, width=150, height=20):
         # Put the data got and put it in a list
-        self.datas = data.split(",")
+        self.datas = data.rstrip("\n").split(",")
         # self.datas[2] = int(self.datas[2]) 
 
         # drawing data
@@ -67,4 +67,10 @@ class Node:
             outport[0].update(event.x + self.width - 10, event.y + 30 + i * 20)
 
     def save(self):
+        if self.datas[2] != '0':
+            for i, outport in zip(range(int(self.datas[2])),self.outports):
+                self.datas[4 + 2 * i] = outport[0].data
+
+            # self.datas.append("\n")
+
         return ",".join(self.datas)
